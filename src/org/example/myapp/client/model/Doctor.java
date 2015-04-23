@@ -181,7 +181,7 @@ public class Doctor implements java.io.Serializable{
 	public static Doctor parse_json_to_obj(JSONObject ret) {
 		Doctor doc_ret = new Doctor();
 		try {
-			doc_ret.passwd = ret.getString("password");
+			//doc_ret.passwd = ret.getString("password");
 			doc_ret.name = ret.getString("name");
 			doc_ret.age = Integer.parseInt(ret.getString("age"));
 			doc_ret.mail = ret.getString("email");

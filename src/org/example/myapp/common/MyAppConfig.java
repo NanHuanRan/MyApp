@@ -33,6 +33,8 @@ public class MyAppConfig {
 	//获取当前用户医生的列表
 	public static final String USER_DOC_LIST_URL = "http://rj17701.sinaapp.com/index.php/doctorpatientrelationship/listing/";
 		
+	//获取所有医生的列表
+	public static final String DOC_ALL_URL = "http://rj17701.sinaapp.com/index.php/doctor/all/";
 	
 	//更新用户的信息
 	public static final String USER_UPDATE_INFO_URL = "http://rj17701.sinaapp.com/index.php/patient/update";

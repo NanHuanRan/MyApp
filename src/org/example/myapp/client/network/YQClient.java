@@ -399,6 +399,35 @@ public class YQClient {
 		return  obj;
 	}
 	
+	/**
+	 * @brief 获取医生列表
+	 */
+	public ReturnObj get_all_doc_list(int pageindex) {
+		
+		ReturnObj obj = new ReturnObj();
+		try {
+			HttpGet httpGet = new HttpGet(MyAppConfig.DOC_ALL_URL + Integer.toString(pageindex));  
+			
+			HttpResponse httpResponse = getThreadSafeClient().execute(httpGet);
+			InputStream inputStream = httpResponse.getEntity().getContent();
+			BufferedReader reader = new BufferedReader(new InputStreamReader(
+					inputStream));
+			String str_all = "";
+			String line = "";
+			while (null != (line = reader.readLine())) {
+				str_all += line;
+			}
+
+			obj.paser_return_code(str_all);
+		
+		} catch (Exception e) {
+			 e.printStackTrace();
+			 obj.setMsg(e.getMessage());
+			 obj.setRet_code(-1);
+		}
+		
+		return  obj;
+	}
 	
 	/**
 	 * @brief 获取未读信息
@@ -624,9 +653,7 @@ public class YQClient {
 	public ReturnObj get_post_list(long id) {
 		ReturnObj obj = new ReturnObj();
 		try {
-			
 			HttpGet httpGet = new HttpGet(MyAppConfig.PATIENT_GET_POST_LIST + Long.toString(id));  
-			
 			HttpResponse httpResponse = httpClient.execute(httpGet);
 			InputStream inputStream = httpResponse.getEntity().getContent();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(

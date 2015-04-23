@@ -51,8 +51,8 @@ public class BuddyActivity extends Activity {
 		if (new_http_client == null) {
 			return;
 		}
-		ReturnObj ret_obj =  new_http_client.get_user_doc_list(MainActivity.myUser.getId());
-	
+		//ReturnObj ret_obj =  new_http_client.get_user_doc_list(MainActivity.myUser.getId());
+		ReturnObj ret_obj =  new_http_client.get_all_doc_list(0);
 		if (ret_obj.getRet_code() == 0) {
 			buddyStr = ret_obj.getOrg_str();
 			buddyEntityList = Doctor.paser_str_to_objlist(buddyStr);
