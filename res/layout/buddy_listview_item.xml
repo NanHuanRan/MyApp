@@ -17,32 +17,34 @@
 		        <TextView android:id="@+id/doc_name"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
-			       	android:textSize="20.0dip"
+			        android:includeFontPadding="false"
+			       	android:textSize="15.0dip"
+			       	android:textStyle="bold"
 	     			android:textColor="@color/listitem_black"
 			        />
 		        
 		        <TextView android:id="@+id/doc_major"
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
-		            android:textSize="15.0dip" 
+		            android:textSize="10.0dip" 
 		            android:layout_marginLeft="10dip"/>
 	        
 	        	<TextView android:id="@+id/doc_tel"
 	            	android:layout_width="wrap_content"
 	            	android:layout_height="wrap_content"
-	           	 	android:textSize="15.0dip"
+	           	 	android:textSize="10.0dip"
 	           	 	android:visibility="invisible" />
 	        
 	       		<TextView android:id="@+id/doc_isonline"
 	            	android:layout_width="wrap_content"
 	            	android:layout_height="wrap_content"
-	            	android:textSize="15.0dip" 
+	            	android:textSize="10.0dip" 
 	            	android:visibility="gone"/>
 	       		
 	       		<TextView android:id="@+id/weidu_mes_no"
 	            	android:layout_width="wrap_content"
 	            	android:layout_height="wrap_content"
-	           	 	android:textSize="15.0dip" />
+	           	 	android:textSize="10.0dip" />
 	       	 </LinearLayout>
 	       	 
 	      	<LinearLayout android:orientation="horizontal"
@@ -52,6 +54,6 @@
 		        <TextView android:id="@+id/doc_dept"
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
-		            android:textSize="15.0dip" />
+		            android:textSize="10.0dip" />
 	</LinearLayout>
 </LinearLayout>

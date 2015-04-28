@@ -10,6 +10,8 @@
     <string name="pull_to_refresh_update">最近更新：</string>
     <string name="comment_reply_title">---共有 %d 条评论---</string>
 	<string name="question_pub_head_title">我要发帖</string>
+	<string name="frame_title_all_docs">找医生</string>
+	<string name="frame_title_my_docs">我的医生</string>
     <string-array name="post_pub_options">
         <item>默认分类</item>
     </string-array>
