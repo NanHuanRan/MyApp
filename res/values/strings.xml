@@ -12,6 +12,12 @@
 	<string name="question_pub_head_title">我要发帖</string>
 	<string name="frame_title_all_docs">找医生</string>
 	<string name="frame_title_my_docs">我的医生</string>
+	
+	<string name="frame_title_summary">简介</string>
+	<string name="frame_title_chat">咨询</string>
+	<string name="frame_title_opp">预约</string>
+	<string name="frame_title_adddoc">添加到我的医生</string>
+	<string name="frame_title_deldoc">删除我的医生</string>
     <string-array name="post_pub_options">
         <item>默认分类</item>
     </string-array>

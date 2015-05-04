@@ -51,7 +51,7 @@ public class BuddyActivity extends Activity {
 
 	public final static int CATALOG_ALL = 1;
 	public final static int CATALOG_MY = 2;
-	private int curDocCatalog = CATALOG_ALL;
+	private int curDocCatalog = CATALOG_MY;
 	
 	Doctor temp;
 
@@ -197,17 +197,10 @@ public class BuddyActivity extends Activity {
 		}
 		
 		initFrameButton();
+		initFrameListView();
 		
 		paser_doc_list(curDocCatalog);
-        //填充数据
-		listview_all_docs = (ListView) findViewById(R.id.listview_all_docs);
-		listview_my_docs = (ListView) findViewById(R.id.listview_my_docs);
-		
-		Log.i("Debug zhaolei","onCreate: "+ buddyEntityList.size());
-		
-		LoadDocList(listview_all_docs);
-        	    
-        setListViewListener();
+		LoadDocList(listview_my_docs);
 	}
 	
 	private void LoadDocList(ListView listview)
@@ -223,13 +216,21 @@ public class BuddyActivity extends Activity {
         frame_btn_all_docs = (Button) findViewById(R.id.frame_btn_all_docs);
         
         // 设置首选择项
-        frame_btn_all_docs.setEnabled(false);
+        frame_btn_my_docs.setEnabled(false);
         
         frame_btn_my_docs.setOnClickListener(frameDocBtnClick(
         		frame_btn_my_docs, CATALOG_MY));
         frame_btn_all_docs.setOnClickListener(frameDocBtnClick(
         		frame_btn_all_docs, CATALOG_ALL));
         
+	}
+	
+	private void initFrameListView()
+	{
+		listview_all_docs = (ListView) findViewById(R.id.listview_all_docs);
+		setListViewListener(listview_all_docs);
+		listview_my_docs = (ListView) findViewById(R.id.listview_my_docs);
+		setListViewListener(listview_my_docs);
 	}
 	
 	private View.OnClickListener frameDocBtnClick(final Button btn,
@@ -266,33 +267,18 @@ public class BuddyActivity extends Activity {
 	}
 	
 	
-	private void setListViewListener() {
-		listview_all_docs.setOnItemClickListener(new OnItemClickListener(){
+	private void setListViewListener(final ListView listview) {
+		listview.setOnItemClickListener(new OnItemClickListener(){
 			public void onItemClick(AdapterView<?> a, View v, int position,long l) {
-				temp= (Doctor) listview_all_docs.getItemAtPosition(position);
+				temp= (Doctor) listview.getItemAtPosition(position);
 				//打开聊天页面
-				Intent intent=new Intent(BuddyActivity.this,ChatActivity.class);
+				Intent intent=new Intent(BuddyActivity.this,DoctorInfoActivity.class);
+				intent.putExtra("doccatalog", curDocCatalog);
 				intent.putExtra("tel", temp.getDoc_id());
 				intent.putExtra("name",temp.getName());
 				intent.putExtra("major", temp.getMajor());
 				intent.putExtra("isonline", temp.getIsOnline());
 				startActivity(intent);
-			}
-        });
-		listview_all_docs.setOnItemLongClickListener(new OnItemLongClickListener(){
-			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,int position, long arg3) {
-				temp= (Doctor) listview_all_docs.getItemAtPosition(position);
-				listview_all_docs.setOnCreateContextMenuListener(new OnCreateContextMenuListener(){
-					public void onCreateContextMenu(ContextMenu menu,
-							View arg1, ContextMenuInfo arg2) {
-						menu.setHeaderTitle("操作");
-						menu.add(0,0,0,"发起会话");
-						menu.add(0,1,0,"删除医生");
-						menu.add(0,2,0,"查看医生资料");
-						menu.add(0,3,0,"发起预约");
-					}
-				});
-				return false;
 			}
         });
 	}

@@ -82,13 +82,12 @@
 
     <ListView
         android:id="@+id/listview_my_docs"
-        style="@style/widget_listview"
-        android:visibility="gone">
+        style="@style/widget_listview">
     </ListView>
 
 	<ListView
         android:id="@+id/listview_all_docs"
         style="@style/widget_listview"
-        >
+        android:visibility="gone">
     </ListView>
 </LinearLayout>

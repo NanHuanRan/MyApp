@@ -37,6 +37,7 @@
         <activity android:name=".client.view.QuestionNewActivity"/>
         <activity android:name=".client.view.QuestionPubActivity"/>
         <activity android:name=".client.view.QuestionDetailActivity"/>
+        <activity android:name=".client.view.DoctorInfoActivity"/>
         <service android:name=".client.view.BuddyService"></service>
         <service android:name=".client.view.ChatService"></service>
     </application>
