@@ -152,7 +152,7 @@ public class BuddyActivity extends Activity {
 	
 	protected void onResume() {
 		updateInfo();
-		
+		LoadDocList(curDocCatalog);
 		if (new_http_client != null) {
 			get_user_doc_msg_toread_read();
 		}
@@ -199,14 +199,16 @@ public class BuddyActivity extends Activity {
 		initFrameButton();
 		initFrameListView();
 		
-		paser_doc_list(curDocCatalog);
-		LoadDocList(listview_my_docs);
+		
+		LoadDocList(curDocCatalog);
 	}
 	
-	private void LoadDocList(ListView listview)
+	private void LoadDocList(int catalog)
 	{
+		paser_doc_list(catalog);
+		ListView curlv =CATALOG_ALL == curDocCatalog?listview_all_docs:listview_my_docs;
 		ba = new BuddyAdapter(this, buddyEntityList);
-		listview.setAdapter(ba);
+		curlv.setAdapter(ba);
 	}
 	
 	
@@ -239,29 +241,33 @@ public class BuddyActivity extends Activity {
 			public void onClick(View v) {
 				if (btn == frame_btn_my_docs) {
 					frame_btn_my_docs.setEnabled(false);
-				} else {
-					frame_btn_my_docs.setEnabled(true);
-				}
-				if (btn == frame_btn_all_docs) {
-					frame_btn_all_docs.setEnabled(false);
-				} else {
 					frame_btn_all_docs.setEnabled(true);
-				}
-
-				curDocCatalog = catalog;
-				paser_doc_list(curDocCatalog);
-				
-				// 非新闻列表
-				if (btn == frame_btn_my_docs) {
 					listview_my_docs.setVisibility(View.VISIBLE);
 					listview_all_docs.setVisibility(View.GONE);
-					LoadDocList(listview_my_docs);
-					
 				} else {
+					frame_btn_my_docs.setEnabled(true);
+					frame_btn_all_docs.setEnabled(false);
 					listview_my_docs.setVisibility(View.GONE);
 					listview_all_docs.setVisibility(View.VISIBLE);
-					LoadDocList(listview_all_docs);
 				}
+//				if (btn == frame_btn_all_docs) {
+//					frame_btn_all_docs.setEnabled(false);
+//				} else {
+//					frame_btn_all_docs.setEnabled(true);
+//				}
+
+				curDocCatalog = catalog;
+				LoadDocList(curDocCatalog);
+//				
+//				// 非新闻列表
+//				if (btn == frame_btn_my_docs) {
+//					
+//					LoadDocList(listview_my_docs);
+//					
+//				} else {
+//					
+//					LoadDocList(listview_all_docs);
+//				}
 			}
 		};
 	}

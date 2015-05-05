@@ -32,63 +32,64 @@ public class DoctorOrderActivity extends Activity {
 	
 	/** Called when the activity is first created. */
 	private EditText startDateTime;
-	private Spinner doc_info_spin;
+//	private Spinner doc_info_spin;
 	private String initStartDateTime = ""; // 初始化开始时间
-	private ArrayAdapter<String> adapter;
+//	private ArrayAdapter<String> adapter;
 	
-	private List<Doctor> doc_list;
+//	private List<Doctor> doc_list;
 	private Long doc_tel;
 	private String doc_name;
-	private ArrayList<String> select_list_str;
+//	private ArrayList<String> select_list_str;
 	
-	private Long doc_tel_selected;
-	private String doc_name_selected;
+//	private Long doc_tel_selected;
+//	private String doc_name_selected;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_doctor_order);
 
-		int select_pos = -1;
-		doc_tel=getIntent().getLongExtra("tel", 0);
-		doc_info_spin = (Spinner) findViewById(R.id.editDocInfo);
+//		int select_pos = -1;
+		doc_tel = getIntent().getLongExtra("tel", 0);
+		doc_name = getIntent().getStringExtra("name");
+//		doc_info_spin = (Spinner) findViewById(R.id.editDocInfo);
+//		
+//		doc_list = Doctor.paser_str_to_objlist(MainActivity.client_in_strict_mode.get_user_doc_list(MainActivity.myUser.getId()).getOrg_str());
+//		select_list_str = new ArrayList<String>();
+//		for (int i=0; i < doc_list.size(); i++) {
+//			select_list_str.add(doc_list.get(i).getName() + "|" + Long.toString(doc_list.get(i).getDoc_id()));
+//			if (doc_tel != 0 && doc_list.get(i).getDoc_id().equals(doc_tel)) {
+//				select_pos = i;
+//				doc_tel_selected = doc_tel;
+//				doc_name_selected = doc_list.get(i).getName();
+//			}
+//		}
+//		adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, select_list_str);
+//		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//		doc_info_spin.setAdapter(adapter);
+//		if (select_pos != -1) {
+//			doc_info_spin.setSelection(select_pos);
+//		}
+//		doc_info_spin.setOnItemSelectedListener(new OnItemSelectedListener() {
+//
+//			@Override
+//			public void onItemSelected(AdapterView<?> parent, View view,
+//					int position, long id) {
+//				// TODO Auto-generated method stub
+//
+//				String temp = doc_info_spin.getSelectedItem().toString();
+//
+//				int pos = temp.indexOf("|");
+//				doc_tel_selected = Long.parseLong(temp.substring(pos + 1));
+//				doc_name_selected = temp.substring(0, pos);
+//			}
+//
+//			@Override
+//			public void onNothingSelected(AdapterView<?> parent) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//		});
 		
-		doc_list = Doctor.paser_str_to_objlist(MainActivity.client_in_strict_mode.get_user_doc_list(MainActivity.myUser.getId()).getOrg_str());
-		select_list_str = new ArrayList<String>();
-		for (int i=0; i < doc_list.size(); i++) {
-			select_list_str.add(doc_list.get(i).getName() + "|" + Long.toString(doc_list.get(i).getDoc_id()));
-			if (doc_tel != 0 && doc_list.get(i).getDoc_id().equals(doc_tel)) {
-				select_pos = i;
-				doc_tel_selected = doc_tel;
-				doc_name_selected = doc_list.get(i).getName();
-			}
-		}
-		adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, select_list_str);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		doc_info_spin.setAdapter(adapter);
-		if (select_pos != -1) {
-			doc_info_spin.setSelection(select_pos);
-		}
-		doc_info_spin.setOnItemSelectedListener(new OnItemSelectedListener() {
-
-			@Override
-			public void onItemSelected(AdapterView<?> parent, View view,
-					int position, long id) {
-				// TODO Auto-generated method stub
-
-				String temp = doc_info_spin.getSelectedItem().toString();
-
-				int pos = temp.indexOf("|");
-				doc_tel_selected = Long.parseLong(temp.substring(pos + 1));
-				doc_name_selected = temp.substring(0, pos);
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> parent) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-
 		// 两个输入框
 		startDateTime = (EditText) findViewById(R.id.inputDate);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
@@ -132,9 +133,9 @@ public class DoctorOrderActivity extends Activity {
 				appdatetime = appdatetime.replace("日", "");
 
 				
-				ReturnObj ret_obj = MainActivity.client_in_strict_mode.add_user_oder(MainActivity.myUser.getId(), doc_tel_selected, appdatetime);
+				ReturnObj ret_obj = MainActivity.client_in_strict_mode.add_user_oder(MainActivity.myUser.getId(), doc_tel, appdatetime);
 				if (ret_obj.getRet_code() == 0) {
-					Toast.makeText(DoctorOrderActivity.this, "预约成功：" + doc_name_selected + "@" + appdatetime, Toast.LENGTH_SHORT).show();
+					Toast.makeText(DoctorOrderActivity.this, "预约成功：" + doc_name + "@" + appdatetime, Toast.LENGTH_SHORT).show();
 					DoctorOrderActivity.this.finish();
 				} else {
 					Toast.makeText(DoctorOrderActivity.this, "预约失败：" + ret_obj.getMsg(), Toast.LENGTH_SHORT).show();

@@ -15,12 +15,12 @@
 	   	android:layout_marginLeft="5.0dip"
 	   	android:background="@drawable/head_back"/>
    	
-   	
-   	<TextView 
+   	<TextView
    	    android:id="@+id/question_detail_head_title"
-   		style="@style/detail_head_title" 
-   		android:layout_gravity="center"
-   		android:text="帖子正文"/>
+   	    style="@style/detail_head_title"
+   	    android:layout_gravity="center"
+   	    android:text="帖子正文"
+   	    android:visibility="gone" />
    	
    	<ProgressBar 
 		android:id="@+id/question_detail_head_progress" 

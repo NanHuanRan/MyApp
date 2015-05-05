@@ -42,7 +42,7 @@
           -->       
             <RadioButton   
                 android:id="@+id/tab_buddy" 
-                android:text="我的医生"
+                android:text="医生服务"
                 android:checked="true"   
                 android:textColor="@color/tab_text"
                 android:background="@drawable/tabbar_bg_selector"
@@ -51,7 +51,7 @@
     		
             <RadioButton   
                 android:id="@+id/main_footbar_question"   
-                android:text="论坛" 
+                android:text="问答" 
                 android:textColor="@color/tab_text"
                 android:background="@drawable/tabbar_bg_selector"
                 android:drawableTop="@drawable/tab_qzone_selector"   

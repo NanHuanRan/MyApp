@@ -122,7 +122,8 @@
         android:background="@drawable/back_more_button"
         android:baselineAligned="false"
         android:paddingLeft="30dp"
-        android:paddingRight="10dp" >
+        android:paddingRight="10dp"
+        android:visibility="gone" >
 
         <ImageView
             android:id="@+id/imageView3"

@@ -127,8 +127,8 @@ public class DoctorInfoActivity extends Activity {
 			Intent intent_yuyue = new Intent(DoctorInfoActivity.this,DoctorOrderActivity.class);
 			intent_yuyue.putExtra("tel", doctor.getDoc_id());
 			intent_yuyue.putExtra("name",doctor.getName());
-			intent_yuyue.putExtra("major", doctor.getMajor());
-			intent_yuyue.putExtra("isonline", doctor.getIsOnline());
+			//intent_yuyue.putExtra("major", doctor.getMajor());
+			//intent_yuyue.putExtra("isonline", doctor.getIsOnline());
 			startActivity(intent_yuyue);
 		}
 	};
