@@ -80,8 +80,8 @@ public class DoctorInfoActivity extends Activity {
 					doctor = (Doctor) msg.obj;
 					
 					doc_name.setText(doctor.getName());
-					doc_major.setText(doctor.getMajor());
-					doc_summary.setText(doctor.getHospital()+"|"+doctor.getDepartment()+"|"+doctor.getJob());
+					doc_major.setText(doctor.getHospital()+"\r\n"+doctor.getDepartment());
+					doc_summary.setText("Ö÷ÖÎ£º"+doctor.getMajor()+ "\r\n"+"¼ò½é£º"+doctor.getSummary());
 					
 					chat_ll.setOnClickListener(chatClickListener);
 					opp_ll.setOnClickListener(oppClickListener);

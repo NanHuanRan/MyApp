@@ -27,6 +27,7 @@ public class Doctor implements java.io.Serializable{
 	private String job; //职务
 	private String major; //主治
 	private String mail; //邮箱；
+	private String summary;//简介
 	private int isOnline;
 	private int mes_to_read; //未读消息树
 	
@@ -177,6 +178,15 @@ public class Doctor implements java.io.Serializable{
 	}
 	
 	
+	public String getSummary()
+	{
+		return summary;
+	}
+	
+	public void setSummary(String summary)
+	{
+		this.summary = summary;
+	}
 	
 	public static Doctor parse_json_to_obj(JSONObject ret) {
 		Doctor doc_ret = new Doctor();
@@ -190,6 +200,7 @@ public class Doctor implements java.io.Serializable{
 			doc_ret.hospital = ret.getString("hospital");
 			doc_ret.department = ret.getString("department");
 			doc_ret.job = ret.getString("job");
+			doc_ret.summary = ret.getString("summary");
 			
 			if (ret.isNull("isonline")) {
 				doc_ret.isOnline = 0;
